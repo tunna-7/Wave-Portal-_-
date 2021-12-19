@@ -1,3 +1,8 @@
+# Wave-Portal-👋
+## A Web3 App with Solidity and Ethereum Smart Contract
+## 👉👉 [Wave Me!](https://waveportal-starter-project.tunna-7.repl.co/)
+
+
 ## Running React on Repl.it
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
@@ -12,9 +17,7 @@ Using the two in conjunction is one of the fastest ways to build a web app.
 
 By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the `.replit` file.
 
-# Wave-Portal-👋
-## A Web3 App with Solidity and Ethereum Smart Contract
-## 👉👉 [Wave Me!](https://waveportal-starter-project.tunna-7.repl.co/)
+
 
 ## Prerequisites
 
