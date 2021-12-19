@@ -44,6 +44,6 @@ By default, Replit runs the `dev` script, but you can configure it by changing t
 ### How the site will ask for GAS before counting the wave count
 ![section 2 ending](https://user-images.githubusercontent.com/66274690/146689328-c8267a1f-5d28-4c6d-a711-4bd7437e9f64.gif)
 
-![we-are-still-working-on-it-construction](https://user-images.githubusercontent.com/66274690/146689994-0ecdf434-0329-4921-8fa5-abf2a904f06f.png)
+    ![we-are-still-working-on-it-construction](https://user-images.githubusercontent.com/66274690/146689994-0ecdf434-0329-4921-8fa5-abf2a904f06f.png)
 
 
