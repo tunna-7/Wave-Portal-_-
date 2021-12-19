@@ -45,7 +45,7 @@ const App = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Get MetaMask!");
+        alert("Get MetaMask! 😥");
         return;
       }
 
