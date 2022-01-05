@@ -6,10 +6,55 @@ import abi from "./utils/WavePortal.json"
 const App = () => {
   
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0xF254790888bCa1Da2178860bb36d2a3c61bD8e0E";
+   /*
+   * All state property to store all waves
+   */
+  const [allWaves, setAllWaves] = useState([]);
+  const contractAddress = "0xa0a7AcB4eF3F674125013c6905FdF965eB82244d";
   const contractABI = abi.abi;
-
   
+
+  /*
+   Create a method that gets all waves from your contract
+  */
+  const getAllWaves = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+
+        /*
+         * Call the getAllWaves method from your Smart Contract
+         */
+        const waves = await wavePortalContract.getAllWaves();
+        //const waveTxn = await wavePortalContract.wave("this is a message");
+
+        /*
+         * We only need address, timestamp, and message in our UI so let's
+         * pick those out
+         */
+        let wavesCleaned = [];
+        waves.forEach(wave => {
+          wavesCleaned.push({
+            address: wave.waver,
+            timestamp: new Date(wave.timestamp * 1000),
+            message: wave.message
+          });
+        });
+
+        /*
+         * Store our data in React State
+         */
+        setAllWaves(wavesCleaned);
+      } else {
+        console.log("Ethereum object doesn't exist!")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -70,7 +115,7 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave();
+        const waveTxn = await wavePortalContract.wave("hey");
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -118,6 +163,14 @@ const App = () => {
           </button>
         )}
         
+        {allWaves.map((wave, index) => {
+          return (
+            <div key={index} style={{ backgroundColor: "white", marginTop: "16px", padding: "8px" }}>
+              <div>Address: {wave.address}</div>
+              <div>Time: {wave.timestamp.toString()}</div>
+              <div>Message: {wave.message}</div>
+            </div>)
+        })}
       </div>
     </div>
   );
